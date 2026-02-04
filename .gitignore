@@ -1,0 +1,50 @@
+# --- Node.js Standard ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Environment & Security (CRITICAL) ---
+# Never commit private keys, mnemonics, or API keys
+.env
+.env.local
+.env.*.local
+secrets.json
+mnemonic.txt
+.secret
+
+# --- Blockchain Frameworks ---
+
+# Hardhat
+artifacts/
+cache/
+typechain/
+typechain-types/
+coverage/
+coverage.json
+hardhat.config.js.d.ts # If using TypeScript
+
+# Truffle
+build/
+.auth.json
+
+# Foundry (if applicable)
+out/
+broadcast/
+cache_forge/
+
+# Ganache / Local Testnets
+ganache-db/
+
+# --- Testing & Reports ---
+.nyc_output/
+test-results/
+
+# --- IDEs & OS ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+node_modules
