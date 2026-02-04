@@ -48,11 +48,11 @@ contract LaunchpadFactory {
         require(durationInDays > 0, "Duration must be greater than 0");
         require(tokenRate > 0, "Token rate must be greater than 0");
 
-        // Deploy ProjectToken contract
+        // Deploy ProjectToken contract (factory is temporary owner)
         ProjectToken token = new ProjectToken(
             tokenName,
             tokenSymbol,
-            address(0) // Temporary, will transfer ownership to Crowdsale
+            address(this) // Factory is temporary owner
         );
 
         // Deploy Crowdsale contract
