@@ -69,7 +69,7 @@ contract Crowdsale is ReentrancyGuard {
         totalRaised += msg.value;
 
         // Calculate tokens to mint (tokenRate tokens per 1 ETH)
-        uint256 tokensToMint = (msg.value * tokenRate) / 1 ether;
+        uint256 tokensToMint = msg.value * tokenRate;
         
         // Mint tokens to backer
         token.mint(msg.sender, tokensToMint);
