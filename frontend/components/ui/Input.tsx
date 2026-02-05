@@ -23,18 +23,17 @@ export const Input: React.FC<InputProps> = ({
             <input
                 className={`
           bg-[var(--surface)] 
-          border border-[var(--border)] 
-          rounded-lg 
+          border-2 border-[var(--border)] 
+          rounded-xl 
           px-4 py-3 
           text-[var(--text-primary)] 
           placeholder:text-[var(--text-muted)]
           focus:outline-none 
-          focus:border-[var(--border-hover)]
-          focus:ring-1
-          focus:ring-[var(--border-hover)]
+          focus:border-[var(--accent-primary)]
+          focus:shadow-[0_0_20px_rgba(0,245,255,0.2)]
           transition-all
-          duration-200
-          ${error ? 'border-red-900 bg-red-950/20' : ''}
+          duration-300
+          ${error ? 'border-red-500 bg-red-950/20' : ''}
           ${className}
         `}
                 {...props}
