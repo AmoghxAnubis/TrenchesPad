@@ -39,8 +39,8 @@ const features = [
             </svg>
         ),
         title: 'Built on Base',
-        description: 'Low fees, fast transactions. Powered by Coinbase's L2 infrastructure.',
-  },
+        description: 'Low fees, fast transactions. Powered by Coinbase\'s L2 infrastructure.',
+    },
 ];
 
 export const FeaturesSection: React.FC = () => {
