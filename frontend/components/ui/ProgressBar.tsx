@@ -19,21 +19,21 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     return (
         <div className={`w-full ${className}`}>
             <div className="flex justify-between items-center mb-3">
-                <span className="text-sm text-[var(--text-secondary)] font-medium">
+                <span className="text-sm font-black uppercase tracking-tight">
                     {current.toFixed(2)} ETH / {goal.toFixed(2)} ETH
                 </span>
                 {showPercentage && (
-                    <span className={`text-sm font-bold ${isComplete ? 'text-gradient-cyan' : 'text-[var(--accent-primary)]'}`}>
-                        {percentage.toFixed(1)}%
+                    <span className={`text-sm font-black ${isComplete ? 'text-[var(--accent-lime)]' : 'text-[var(--accent-pink)]'}`}>
+                        {percentage.toFixed(0)}%
                     </span>
                 )}
             </div>
-            <div className="w-full h-3 bg-[var(--surface)] rounded-full overflow-hidden border border-[var(--border)] relative">
+            <div className="w-full h-8 bg-white border-brutal shadow-brutal relative overflow-hidden">
                 <div
                     style={{ width: `${percentage}%` }}
-                    className={`h-full transition-all duration-1000 ease-out ${isComplete
-                            ? 'bg-gradient-to-r from-[#43e97b] to-[#38f9d7] shadow-[0_0_15px_rgba(67,233,123,0.6)]'
-                            : 'bg-gradient-to-r from-[#667eea] to-[#764ba2] shadow-[0_0_15px_rgba(102,126,234,0.6)]'
+                    className={`h-full transition-all duration-500 ease-out border-r-4 border-black ${isComplete
+                            ? 'bg-[var(--accent-lime)]'
+                            : 'bg-[var(--accent-yellow)]'
                         }`}
                 />
             </div>

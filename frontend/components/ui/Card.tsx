@@ -5,7 +5,7 @@ interface CardProps {
     className?: string;
     hover?: boolean;
     onClick?: () => void;
-    gradient?: boolean;
+    accent?: 'yellow' | 'cyan' | 'pink' | 'lime' | 'purple' | 'none';
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -13,15 +13,23 @@ export const Card: React.FC<CardProps> = ({
     className = '',
     hover = true,
     onClick,
-    gradient = false
+    accent = 'none'
 }) => {
-    const baseStyles = 'bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 transition-all duration-300 backdrop-blur-sm';
-    const hoverStyles = hover ? 'hover:border-[var(--accent-primary)] hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(102,126,234,0.4)] cursor-pointer' : '';
-    const gradientStyles = gradient ? 'gradient-border' : '';
+    const baseStyles = 'bg-white border-brutal shadow-brutal p-6 transition-all duration-100';
+    const hoverStyles = hover ? 'brutal-hover cursor-pointer' : '';
+
+    const accentStyles = {
+        yellow: 'border-l-[12px] border-l-[var(--accent-yellow)]',
+        cyan: 'border-l-[12px] border-l-[var(--accent-cyan)]',
+        pink: 'border-l-[12px] border-l-[var(--accent-pink)]',
+        lime: 'border-l-[12px] border-l-[var(--accent-lime)]',
+        purple: 'border-l-[12px] border-l-[var(--accent-purple)]',
+        none: '',
+    };
 
     return (
         <div
-            className={`${baseStyles} ${hoverStyles} ${gradientStyles} ${className} group`}
+            className={`${baseStyles} ${hoverStyles} ${accentStyles[accent]} ${className}`}
             onClick={onClick}
         >
             {children}

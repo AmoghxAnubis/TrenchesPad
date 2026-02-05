@@ -6,48 +6,50 @@ import Link from 'next/link';
 
 export const CTASection: React.FC = () => {
     return (
-        <section className="section bg-[var(--bg-secondary)]/50 backdrop-blur-sm relative overflow-hidden">
-            {/* Animated gradient orbs */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <section className="section bg-[var(--bg-primary)] relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-10 left-1/4 w-32 h-32 bg-[var(--accent-purple)] border-brutal rotate-brutal"></div>
+            <div className="absolute bottom-10 right-1/4 w-24 h-24 bg-[var(--accent-yellow)] border-brutal rotate-brutal-reverse"></div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center max-w-3xl mx-auto">
-                    <h2 className="font-[family-name:var(--font-space-grotesk)] text-5xl md:text-6xl font-bold mb-6">
-                        Take <span className="text-gradient">ownership</span> of your{' '}
-                        <span className="text-gradient-cyan">assets</span>.
-                    </h2>
+                <div className="max-w-4xl mx-auto">
+                    <div className="bg-white border-brutal-thick shadow-brutal-lg p-12 text-center">
+                        <h2 className="font-[family-name:var(--font-space-grotesk)] text-5xl md:text-6xl font-black mb-6 leading-none">
+                            READY TO
+                            <br />
+                            <span className="bg-[var(--accent-pink)] text-white px-4 inline-block rotate-[-1deg]">LAUNCH</span>
+                            <br />
+                            YOUR PROJECT?
+                        </h2>
 
-                    <p className="text-xl text-[var(--text-secondary)] mb-10">
-                        Launch your project in minutes. No intermediaries. No custody.
-                    </p>
+                        <p className="text-xl font-bold mb-10 max-w-2xl mx-auto">
+                            No gatekeepers. No approval process. Just deploy and go.
+                        </p>
 
-                    <div className="flex flex-wrap gap-4 justify-center">
-                        <Link href="/create">
-                            <Button variant="gradient" size="lg" className="pulse-glow">
-                                🚀 Launch Your Project
-                            </Button>
-                        </Link>
-                        <Link href="/dashboard">
-                            <Button variant="secondary" size="lg">
-                                View All Campaigns
-                            </Button>
-                        </Link>
-                    </div>
-
-                    {/* Trust badges */}
-                    <div className="flex flex-wrap justify-center gap-8 mt-12 pt-8 border-t border-[var(--border)]">
-                        <div className="flex items-center gap-2">
-                            <span className="text-2xl">🔒</span>
-                            <span className="text-sm text-[var(--text-muted)]">Audited Contracts</span>
+                        <div className="flex flex-wrap gap-4 justify-center mb-8">
+                            <Link href="/create">
+                                <Button variant="accent" size="lg">
+                                    🚀 START NOW
+                                </Button>
+                            </Link>
+                            <Link href="/dashboard">
+                                <Button variant="secondary" size="lg">
+                                    BROWSE CAMPAIGNS
+                                </Button>
+                            </Link>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-2xl">⚡</span>
-                            <span className="text-sm text-[var(--text-muted)]">Instant Deployment</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-2xl">🌐</span>
-                            <span className="text-sm text-[var(--text-muted)]">Base Network</span>
+
+                        {/* Trust indicators */}
+                        <div className="flex flex-wrap justify-center gap-6 pt-8 border-t-4 border-black">
+                            <div className="bg-[var(--accent-yellow)] border-brutal px-4 py-2">
+                                <span className="font-black text-sm">🔒 AUDITED</span>
+                            </div>
+                            <div className="bg-[var(--accent-cyan)] border-brutal px-4 py-2">
+                                <span className="font-black text-sm">⚡ INSTANT</span>
+                            </div>
+                            <div className="bg-[var(--accent-lime)] border-brutal px-4 py-2">
+                                <span className="font-black text-sm">🌐 BASE L2</span>
+                            </div>
                         </div>
                     </div>
                 </div>
