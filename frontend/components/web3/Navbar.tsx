@@ -7,6 +7,7 @@ import { Button } from '../ui';
 export const Navbar: React.FC = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [address, setAddress] = useState('');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const connectWallet = async () => {
         if (typeof window.ethereum !== 'undefined') {
@@ -34,7 +35,7 @@ export const Navbar: React.FC = () => {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="bg-[var(--accent-yellow)] border-brutal shadow-brutal px-4 py-2 brutal-hover">
+                        <div className="bg-[var(--accent-yellow)] border-brutal shadow-brutal px-4 py-2 brutal-hover hover:bg-[var(--accent-cyan)] transition-colors duration-300">
                             <span className="text-xl font-black font-[family-name:var(--font-space-grotesk)] uppercase">
                                 TrenchesPad
                             </span>
@@ -43,39 +44,43 @@ export const Navbar: React.FC = () => {
 
                     {/* Navigation Links */}
                     <div className="hidden md:flex items-center gap-6">
-                        <Link
-                            href="/dashboard"
-                            className="font-black uppercase text-sm hover:text-[var(--accent-pink)] transition-colors"
-                        >
-                            CAMPAIGNS
-                        </Link>
-                        <Link
-                            href="/create"
-                            className="font-black uppercase text-sm hover:text-[var(--accent-cyan)] transition-colors"
-                        >
-                            LAUNCH
-                        </Link>
-                        <a
-                            href="https://docs.base.org"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-black uppercase text-sm hover:text-[var(--accent-lime)] transition-colors"
-                        >
-                            DOCS
-                        </a>
+                        {[
+                            { href: '/dashboard', label: 'CAMPAIGNS', color: 'var(--accent-pink)' },
+                            { href: '/create', label: 'LAUNCH', color: 'var(--accent-cyan)' },
+                            { href: 'https://docs.base.org', label: 'DOCS', color: 'var(--accent-lime)', external: true },
+                        ].map((link, i) => (
+                            <Link
+                                key={i}
+                                href={link.href}
+                                target={link.external ? '_blank' : undefined}
+                                rel={link.external ? 'noopener noreferrer' : undefined}
+                                className="font-black uppercase text-sm hover:scale-110 transition-all duration-200 relative group"
+                            >
+                                {link.label}
+                                <span
+                                    className="absolute bottom-0 left-0 w-0 h-1 group-hover:w-full transition-all duration-300"
+                                    style={{ backgroundColor: link.color }}
+                                ></span>
+                            </Link>
+                        ))}
                     </div>
 
                     {/* Connect Wallet Button */}
                     <div>
                         {isConnected ? (
-                            <div className="flex items-center gap-3 bg-[var(--accent-lime)] border-brutal shadow-brutal px-4 py-2">
+                            <div className="flex items-center gap-3 bg-[var(--accent-lime)] border-brutal shadow-brutal px-4 py-2 brutal-hover cursor-pointer">
                                 <div className="text-sm font-black uppercase">
                                     {formatAddress(address)}
                                 </div>
-                                <div className="w-3 h-3 bg-black rounded-full"></div>
+                                <div className="w-3 h-3 bg-black rounded-full pulse-brutal"></div>
                             </div>
                         ) : (
-                            <Button onClick={connectWallet} variant="primary" size="sm">
+                            <Button
+                                onClick={connectWallet}
+                                variant="primary"
+                                size="sm"
+                                className="hover:scale-105 active:scale-95"
+                            >
                                 CONNECT
                             </Button>
                         )}
