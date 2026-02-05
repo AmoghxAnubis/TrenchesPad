@@ -15,7 +15,7 @@ export const Card: React.FC<CardProps> = ({
     onClick,
     accent = 'none'
 }) => {
-    const baseStyles = 'bg-white border-brutal shadow-brutal p-6 transition-all duration-100';
+    const baseStyles = 'bg-[var(--bg-secondary)] border-brutal shadow-brutal p-6 transition-all duration-100';
     const hoverStyles = hover ? 'brutal-hover cursor-pointer' : '';
 
     const accentStyles = {

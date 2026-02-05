@@ -16,7 +16,7 @@ export const CTASection: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto slide-in-up">
                     <div
-                        className="bg-white border-brutal-thick shadow-brutal-lg p-12 text-center transition-all duration-300 hover:shadow-[16px_16px_0px_#000000] hover:translate-x-[-4px] hover:translate-y-[-4px]"
+                        className="bg-[var(--bg-secondary)] border-brutal-thick shadow-brutal-lg p-12 text-center transition-all duration-300 hover:shadow-[16px_16px_0px_var(--border)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                     >
@@ -57,7 +57,7 @@ export const CTASection: React.FC = () => {
                             ].map((badge, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white border-brutal px-4 py-2 brutal-hover cursor-pointer"
+                                    className="bg-[var(--bg-secondary)] border-brutal px-4 py-2 brutal-hover cursor-pointer"
                                     style={{
                                         backgroundColor: badge.bg,
                                         animationDelay: `${i * 0.1}s`

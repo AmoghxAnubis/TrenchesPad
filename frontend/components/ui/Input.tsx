@@ -22,10 +22,10 @@ export const Input: React.FC<InputProps> = ({
             )}
             <input
                 className={`
-          bg-white 
+          bg-[var(--bg-secondary)]
           border-brutal
           px-4 py-3 
-          text-black
+          text-[var(--text-primary)]
           font-bold
           placeholder:text-[var(--text-muted)]
           placeholder:font-semibold

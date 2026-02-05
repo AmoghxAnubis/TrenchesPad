@@ -28,10 +28,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
                     </span>
                 )}
             </div>
-            <div className="w-full h-8 bg-white border-brutal shadow-brutal relative overflow-hidden">
+            <div className="w-full h-8 bg-[var(--bg-secondary)] border-brutal shadow-brutal relative overflow-hidden">
                 <div
                     style={{ width: `${percentage}%` }}
-                    className={`h-full transition-all duration-500 ease-out border-r-4 border-black ${isComplete
+                    className={`h-full transition-all duration-500 ease-out border-r-4 border-[var(--border)] ${isComplete
                             ? 'bg-[var(--accent-lime)]'
                             : 'bg-[var(--accent-yellow)]'
                         }`}

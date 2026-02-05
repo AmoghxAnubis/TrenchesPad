@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => {
                             ].map((stat, i) => (
                                 <div
                                     key={i}
-                                    className="bg-white border-brutal shadow-brutal p-4 brutal-hover cursor-pointer"
+                                    className="bg-[var(--bg-secondary)] border-brutal shadow-brutal p-4 brutal-hover cursor-pointer"
                                     style={{ animationDelay: `${i * 0.1}s` }}
                                 >
                                     <div className="text-3xl font-black">{stat.value}</div>
@@ -108,7 +108,7 @@ export const HeroSection: React.FC = () => {
                     <div className="relative hidden lg:block slide-in-right">
                         <div className="relative w-full h-[600px]">
                             {/* Stacked Cards with interactions */}
-                            <div className="absolute top-0 right-0 w-80 bg-white border-brutal shadow-brutal-lg p-6 rotate-brutal brutal-hover cursor-pointer">
+                            <div className="absolute top-0 right-0 w-80 bg-[var(--bg-secondary)] border-brutal shadow-brutal-lg p-6 rotate-brutal brutal-hover cursor-pointer">
                                 <div className="text-xs font-black uppercase mb-2 bg-[var(--accent-lime)] inline-block px-2 py-1 pulse-brutal">
                                     Active
                                 </div>
@@ -119,7 +119,7 @@ export const HeroSection: React.FC = () => {
                                 <div className="text-sm font-bold mt-2">75% FUNDED</div>
                             </div>
 
-                            <div className="absolute bottom-20 left-0 w-72 bg-white border-brutal shadow-brutal-lg p-6 rotate-brutal-reverse brutal-hover cursor-pointer">
+                            <div className="absolute bottom-20 left-0 w-72 bg-[var(--bg-secondary)] border-brutal shadow-brutal-lg p-6 rotate-brutal-reverse brutal-hover cursor-pointer">
                                 <div className="text-xs font-black uppercase mb-2">Total Raised</div>
                                 <div className="text-4xl font-black text-[var(--accent-pink)] hover:text-[var(--accent-purple)] transition-colors">
                                     12.5 ETH

@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button } from '../ui';
+import { Button, ThemeToggle } from '../ui';
 
 export const Navbar: React.FC = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [address, setAddress] = useState('');
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const connectWallet = async () => {
         if (typeof window.ethereum !== 'undefined') {
@@ -30,7 +29,7 @@ export const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-brutal shadow-brutal">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-secondary)] border-b-brutal shadow-brutal transition-colors duration-300">
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
@@ -65,14 +64,16 @@ export const Navbar: React.FC = () => {
                         ))}
                     </div>
 
-                    {/* Connect Wallet Button */}
-                    <div>
+                    {/* Theme Toggle & Connect Wallet */}
+                    <div className="flex items-center gap-4">
+                        <ThemeToggle />
+
                         {isConnected ? (
                             <div className="flex items-center gap-3 bg-[var(--accent-lime)] border-brutal shadow-brutal px-4 py-2 brutal-hover cursor-pointer">
                                 <div className="text-sm font-black uppercase">
                                     {formatAddress(address)}
                                 </div>
-                                <div className="w-3 h-3 bg-black rounded-full pulse-brutal"></div>
+                                <div className="w-3 h-3 bg-[var(--border)] rounded-full pulse-brutal"></div>
                             </div>
                         ) : (
                             <Button

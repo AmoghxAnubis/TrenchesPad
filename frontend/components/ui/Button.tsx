@@ -19,9 +19,9 @@ export const Button: React.FC<ButtonProps> = ({
     const baseStyles = 'font-black uppercase tracking-tight border-brutal shadow-brutal brutal-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-100';
 
     const variantStyles = {
-        primary: 'bg-[var(--accent-yellow)] text-black border-black hover:bg-[var(--accent-lime)]',
-        secondary: 'bg-white text-black border-black hover:bg-[var(--accent-cyan)]',
-        accent: 'bg-[var(--accent-pink)] text-white border-black hover:bg-[var(--accent-purple)]',
+        primary: 'bg-[var(--accent-yellow)] text-[var(--text-primary)] border-[var(--border)] hover:bg-[var(--accent-lime)]',
+        secondary: 'bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border)] hover:bg-[var(--accent-cyan)] hover:text-[var(--text-primary)]',
+        accent: 'bg-[var(--accent-pink)] text-white border-[var(--border)] hover:bg-[var(--accent-purple)]',
     };
 
     const sizeStyles = {
@@ -38,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
         >
             {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
-                    <span className="inline-block w-5 h-5 border-4 border-black border-t-transparent rounded-full animate-spin"></span>
+                    <span className="inline-block w-5 h-5 border-4 border-[var(--border)] border-t-transparent rounded-full animate-spin"></span>
                     LOADING...
                 </span>
             ) : (

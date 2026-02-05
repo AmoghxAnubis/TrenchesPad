@@ -62,7 +62,7 @@ export const StatsSection: React.FC = () => {
     };
 
     return (
-        <section id="stats-section" className="section bg-white">
+        <section id="stats-section" className="section bg-[var(--bg-primary)]">
             <div className="container mx-auto px-6">
                 <div className="mb-16 text-center slide-in-up">
                     <h2 className="font-[family-name:var(--font-space-grotesk)] text-4xl md:text-5xl font-black mb-4">
@@ -80,7 +80,7 @@ export const StatsSection: React.FC = () => {
                         return (
                             <div
                                 key={index}
-                                className={`bg-white border-brutal shadow-brutal-lg p-8 text-center brutal-hover cursor-pointer slide-in-up ${clickedIndex === index ? 'shake-brutal' : ''
+                                className={`bg-[var(--bg-secondary)] border-brutal shadow-brutal-lg p-8 text-center brutal-hover cursor-pointer slide-in-up ${clickedIndex === index ? 'shake-brutal' : ''
                                     }`}
                                 style={{ animationDelay: `${index * 0.1}s` }}
                                 onClick={() => handleClick(index)}

@@ -40,6 +40,34 @@
     --transition-brutal: 100ms ease-out;
   }
 
+  /* Dark Mode - Neo-Brutalist Dark Palette */
+  [data-theme="dark"] {
+    /* Backgrounds */
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #1A1A1A;
+    --surface: #2A2A2A;
+
+    /* Borders - THICK & BOLD (White in dark mode) */
+    --border: #FFFFFF;
+
+    /* Text */
+    --text-primary: #FFFFFF;
+    --text-secondary: #E5E5E5;
+    --text-muted: #999999;
+
+    /* Accent Colors - Same vibrant colors work in dark mode */
+    --accent-yellow: #FFEB3B;
+    --accent-cyan: #00E5FF;
+    --accent-pink: #FF1744;
+    --accent-lime: #C6FF00;
+    --accent-purple: #D500F9;
+
+    /* Shadows - HARSH & OFFSET (White in dark mode) */
+    --shadow-brutal: 8px 8px 0px #FFFFFF;
+    --shadow-brutal-lg: 12px 12px 0px #FFFFFF;
+    --shadow-brutal-hover: 4px 4px 0px #FFFFFF;
+  }
+
   /* Typography - BOLD & IMPACTFUL */
   * {
     -webkit-font-smoothing: antialiased;
@@ -57,6 +85,7 @@
     font-weight: 700;
     line-height: 1.4;
     position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* Headings - ULTRA BOLD */
