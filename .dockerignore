@@ -1,0 +1,22 @@
+# Docker ignore file
+node_modules
+npm-debug.log
+.next
+.git
+.gitignore
+README.md
+.env
+.env.local
+.env.*.local
+*.md
+!DOCKER.md
+.vscode
+.idea
+*.log
+dist
+build
+coverage
+.cache
+artifacts
+cache
+typechain-types
