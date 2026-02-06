@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button, ThemeToggle } from '../ui';
 
 export const Navbar: React.FC = () => {
@@ -33,7 +34,15 @@ export const Navbar: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2">
+                    <Link href="/" className="flex items-center gap-3 group">
+                        {/* Logo Image - Glowing Shield with P */}
+                        <div className="relative w-12 h-12">
+                            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 border-brutal shadow-brutal flex items-center justify-center group-hover:scale-110 transition-transform duration-300 logo-glow">
+                                <span className="text-2xl font-black text-white drop-shadow-lg">P</span>
+                            </div>
+                        </div>
+
+                        {/* Logo Text */}
                         <div className="bg-[var(--accent-yellow)] border-brutal shadow-brutal px-4 py-2 brutal-hover hover:bg-[var(--accent-cyan)] transition-colors duration-300">
                             <span className="text-xl font-black font-[family-name:var(--font-space-grotesk)] uppercase">
                                 TrenchesPad
