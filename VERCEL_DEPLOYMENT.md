@@ -18,25 +18,9 @@ git commit -m "Prepare for Vercel deployment"
 git push origin main
 ```
 
-### 1.2 Verify your repository structure
-```
-TrenchesPad/
-├── frontend/          # Next.js app
-│   ├── app/
-│   ├── components/
-│   ├── public/
-│   ├── package.json
-│   └── next.config.ts
-├── contracts/         # Smart contracts (not deployed to Vercel)
-├── vercel.json       # Vercel configuration
-└── README.md
-```
-
 ---
 
-## Step 2: Deploy to Vercel
-
-### Option A: Deploy via Vercel Dashboard (Recommended)
+## Step 2: Deploy to Vercel Dashboard
 
 1. **Go to Vercel Dashboard**
    - Visit [vercel.com/new](https://vercel.com/new)
@@ -48,19 +32,23 @@ TrenchesPad/
    - Choose your `TrenchesPad` repository
    - Click **"Import"**
 
-3. **Configure Project Settings**
-   - **Framework Preset**: Next.js (auto-detected)
-   - **Root Directory**: `frontend`
+3. **Configure Project Settings** ⚠️ IMPORTANT
+
+   Set these EXACTLY as shown:
+   
+   - **Framework Preset**: Next.js (should auto-detect)
+   - **Root Directory**: `frontend` ← **CRITICAL: Must set this!**
    - **Build Command**: `npm run build` (auto-detected)
    - **Output Directory**: `.next` (auto-detected)
    - **Install Command**: `npm install` (auto-detected)
+   - **Node Version**: 18.x or higher
 
-4. **Add Environment Variables**
-   - Click **"Environment Variables"**
-   - Add the following variables:
+4. **Add Environment Variables** (Optional for now)
+   
+   Click **"Environment Variables"** and add:
    
    ```
-   NEXT_PUBLIC_FACTORY_ADDRESS=your_factory_address
+   NEXT_PUBLIC_FACTORY_ADDRESS=0x0000000000000000000000000000000000000000
    NEXT_PUBLIC_BASE_SEPOLIA_RPC=https://sepolia.base.org
    NEXT_PUBLIC_CHAIN_ID=84532
    NEXT_PUBLIC_EXPLORER_URL=https://sepolia.basescan.org
@@ -68,131 +56,104 @@ TrenchesPad/
    
    - Select **Production**, **Preview**, and **Development**
    - Click **"Add"** for each variable
+   - *Note: You can skip this for initial deployment and add later*
 
 5. **Deploy**
    - Click **"Deploy"**
    - Wait for deployment to complete (2-3 minutes)
    - Your site will be live at `https://your-project.vercel.app`
 
-### Option B: Deploy via Vercel CLI
+---
 
-1. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
+## Common Issues & Solutions
 
-2. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
+### ❌ Error: "No such file or directory"
+**Cause**: Root directory not set to `frontend`
 
-3. **Deploy from project root**
-   ```bash
-   cd e:\TrenchesPad
-   vercel
-   ```
+**Solution**: 
+1. Go to Project Settings → General
+2. Set **Root Directory** to `frontend`
+3. Redeploy
 
-4. **Follow the prompts**
-   - Set up and deploy? **Y**
-   - Which scope? Select your account
-   - Link to existing project? **N**
-   - Project name? **trenchespad** (or your choice)
-   - In which directory is your code located? **frontend**
-   - Want to override settings? **N**
+### ❌ Error: "Command failed"
+**Cause**: Build command running from wrong directory
 
-5. **Set environment variables**
-   ```bash
-   vercel env add NEXT_PUBLIC_FACTORY_ADDRESS
-   vercel env add NEXT_PUBLIC_BASE_SEPOLIA_RPC
-   vercel env add NEXT_PUBLIC_CHAIN_ID
-   vercel env add NEXT_PUBLIC_EXPLORER_URL
-   ```
+**Solution**: 
+- Ensure Root Directory is set to `frontend`
+- Vercel will automatically run commands from that directory
 
-6. **Deploy to production**
-   ```bash
-   vercel --prod
-   ```
+### ❌ Error: "Module not found"
+**Cause**: Dependencies not installed properly
+
+**Solution**:
+- Check that `frontend/package.json` exists
+- Verify all dependencies are listed
+- Try redeploying
 
 ---
 
-## Step 3: Post-Deployment Configuration
+## Step 3: Post-Deployment
 
-### 3.1 Custom Domain (Optional)
-1. Go to your project in Vercel Dashboard
-2. Navigate to **Settings** → **Domains**
-3. Add your custom domain
-4. Update DNS records as instructed
+### Update Environment Variables (After Smart Contract Deployment)
 
-### 3.2 Update Environment Variables
-After deploying smart contracts:
-1. Go to **Settings** → **Environment Variables**
-2. Update `NEXT_PUBLIC_FACTORY_ADDRESS` with deployed address
-3. Redeploy to apply changes
+1. Deploy your smart contracts to Base Sepolia
+2. Go to Vercel Project → **Settings** → **Environment Variables**
+3. Update `NEXT_PUBLIC_FACTORY_ADDRESS` with your deployed factory address
+4. Click **"Save"**
+5. Go to **Deployments** tab
+6. Click **"Redeploy"** on the latest deployment
 
-### 3.3 Enable Analytics (Optional)
-1. Go to **Analytics** tab
-2. Enable Vercel Analytics
-3. View real-time traffic and performance
+### Custom Domain (Optional)
 
----
-
-## Step 4: Continuous Deployment
-
-Vercel automatically deploys:
-- **Production**: Every push to `main` branch
-- **Preview**: Every push to other branches or pull requests
-
-### Disable Auto-Deploy (if needed)
-1. Go to **Settings** → **Git**
-2. Configure deployment branches
-3. Disable auto-deploy for specific branches
+1. Go to **Settings** → **Domains**
+2. Add your custom domain
+3. Update DNS records as instructed by Vercel
+4. Wait for DNS propagation (up to 48 hours)
 
 ---
 
-## Troubleshooting
+## Vercel CLI Alternative
 
-### Build Fails
+If you prefer using the CLI:
 
-**Error**: `Module not found`
-- **Solution**: Ensure all dependencies are in `frontend/package.json`
-- Run `npm install` locally to verify
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
-**Error**: `Build exceeded maximum duration`
-- **Solution**: Optimize build by removing unused dependencies
-- Consider upgrading Vercel plan for longer build times
+# Login
+vercel login
 
-### Environment Variables Not Working
+# Deploy (from TrenchesPad root directory)
+cd e:\TrenchesPad
+vercel
 
-**Issue**: Variables are undefined in browser
-- **Solution**: Ensure variables start with `NEXT_PUBLIC_`
-- Redeploy after adding variables
-- Clear browser cache
+# When prompted:
+# - Set up and deploy? Y
+# - Which scope? [Select your account]
+# - Link to existing project? N
+# - Project name? trenchespad
+# - In which directory is your code located? frontend
+# - Want to override settings? N
 
-### Wallet Connection Issues
-
-**Issue**: MetaMask not connecting
-- **Solution**: Ensure you're on the correct network (Base Sepolia)
-- Check that RPC URL is correct
-- Verify contract addresses are deployed
+# Deploy to production
+vercel --prod
+```
 
 ---
 
 ## Production Checklist
 
-Before going to production:
+Before going live:
 
-- [ ] Deploy smart contracts to Base Mainnet
-- [ ] Update environment variables with mainnet addresses
-- [ ] Update RPC URL to mainnet
-- [ ] Test all pages thoroughly
-- [ ] Test wallet connection
-- [ ] Test campaign creation
-- [ ] Test contribution flow
-- [ ] Set up custom domain
-- [ ] Enable Vercel Analytics
-- [ ] Set up error monitoring (Sentry)
-- [ ] Configure SEO metadata
-- [ ] Add favicon and OG images
+- [ ] ✅ Build succeeds locally (`npm run build` in frontend/)
+- [ ] ✅ Root directory set to `frontend` in Vercel
+- [ ] ✅ Deploy smart contracts to Base Sepolia/Mainnet
+- [ ] ✅ Update environment variables with contract addresses
+- [ ] ✅ Test wallet connection on deployed site
+- [ ] ✅ Test all pages load correctly
+- [ ] ✅ Verify responsive design on mobile
+- [ ] ✅ Set up custom domain (optional)
+- [ ] ✅ Enable Vercel Analytics (optional)
 
 ---
 
@@ -222,20 +183,9 @@ vercel open
 - [Vercel Documentation](https://vercel.com/docs)
 - [Next.js Deployment](https://nextjs.org/docs/deployment)
 - [Vercel CLI Reference](https://vercel.com/docs/cli)
-- [Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables)
 
 ---
 
-## Support
+**🎉 Your TrenchesPad is now live!**
 
-If you encounter issues:
-1. Check [Vercel Status](https://www.vercel-status.com/)
-2. Review deployment logs in Vercel Dashboard
-3. Check Next.js build logs
-4. Visit [Vercel Community](https://github.com/vercel/vercel/discussions)
-
----
-
-**Your TrenchesPad deployment URL**: `https://trenchespad.vercel.app` (or your custom domain)
-
-🎉 **Deployment Complete!** Your neo-brutalist launchpad is now live!
+Access your deployment at: `https://your-project.vercel.app`

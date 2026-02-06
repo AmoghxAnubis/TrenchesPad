@@ -6,7 +6,19 @@ import { Button, ProgressBar } from '@/components/ui';
 import { ContributionForm } from '@/components/campaign';
 
 // Mock campaign data - will be replaced with contract data
-const MOCK_CAMPAIGN = {
+const MOCK_CAMPAIGN: {
+    id: string;
+    name: string;
+    tokenSymbol: string;
+    description: string;
+    currentAmount: number;
+    goalAmount: number;
+    deadline: Date;
+    status: 'active' | 'funded' | 'failed';
+    creator: string;
+    tokenPrice: number;
+    contributors: Array<{ address: string; amount: number; tokens: number }>;
+} = {
     id: '1',
     name: 'DeFi Revolution',
     tokenSymbol: 'DEFI',
@@ -14,7 +26,7 @@ const MOCK_CAMPAIGN = {
     currentAmount: 15.5,
     goalAmount: 20,
     deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-    status: 'active' as const,
+    status: 'active',
     creator: '0x1234567890123456789012345678901234567890',
     tokenPrice: 0.001, // ETH per token
     contributors: [
