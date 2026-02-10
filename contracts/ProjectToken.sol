@@ -14,14 +14,14 @@ contract ProjectToken is ERC20, Ownable {
      * @dev Constructor sets token name, symbol, and assigns ownership to crowdsale
      * @param name Token name (e.g., "Vibe Token")
      * @param symbol Token symbol (e.g., "VIBE")
-     * @param crowdsaleAddress Address of the Crowdsale contract that can mint tokens
+     * @param initialOwner Address of the initial owner (usually the Factory)
      */
     constructor(
         string memory name,
         string memory symbol,
-        address crowdsaleAddress
-    ) ERC20(name, symbol) Ownable(crowdsaleAddress) {
-        require(crowdsaleAddress != address(0), "Invalid crowdsale address");
+        address initialOwner
+    ) ERC20(name, symbol) Ownable(initialOwner) {
+        require(initialOwner != address(0), "Invalid initial owner address");
     }
 
     /**
